@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">udacity_movies_1</string>
+    <string name="no_connectivity">No internet :(</string>
+    <string name="no_Movies">No Movies returned from database...please try again later :)</string>
+    <string name="settings_order_by_key">order_by</string>
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_default">Popularity</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_menu_item">menu item</string>
+    <string name="details_title">Movie Details</string>
+    <string name="settings_order_by_popularity_label">Popularity</string>
+    <string name="settings_order_by_rating_label">Rating</string>
+    <string name="settings_order_by_rating_value">top_rated</string>
+    <string name="settings_order_by_popularity_value">popular</string>
+    <string name="add_to_favorites">Add to favorites</string>
+</resources>
