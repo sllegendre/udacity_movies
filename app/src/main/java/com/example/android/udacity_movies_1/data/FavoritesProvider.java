@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 //import static com.example.android.udacity_movies_1.data.FavoritesContract.FavoriteItem.COLUMN_FAVORITE_ID;
+import static com.example.android.udacity_movies_1.data.FavoritesContract.FavoriteItem.COLUMN_FAVORITE_ID;
 import static com.example.android.udacity_movies_1.data.FavoritesContract.FavoriteItem.COLUMN_FAVORITE_TITLE;
 import static com.example.android.udacity_movies_1.data.FavoritesContract.FavoriteItem.TABLE_NAME;
 
@@ -147,6 +148,7 @@ public class FavoritesProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case FAVORITES:
+                Log.e(LOG_TAG, "the insert method is being executed for "+contentValues.toString());
                 return insertItem(uri, contentValues);
             default:
                 throw new IllegalArgumentException("Insertion is not supported for " + uri);
@@ -193,16 +195,18 @@ public class FavoritesProvider extends ContentProvider {
      */
     private Uri insertItem(Uri uri, ContentValues values) {
         // Check that the title is not null
+
+        Log.e(LOG_TAG, "the insertItem method is being executed for "+values.toString());
         String name = values.getAsString(COLUMN_FAVORITE_TITLE);
         if (name == null) {
             throw new IllegalArgumentException("Item requires a name");
         }
 
         // Check that the id is valid
-//        Integer favoriteId = values.getAsInteger(COLUMN_FAVORITE_ID);
-//        if (favoriteId == null || favoriteId < 0) {
-//            throw new IllegalArgumentException("Item requires valid id");
-//        }
+        Integer favoriteId = values.getAsInteger(COLUMN_FAVORITE_ID);
+        if (favoriteId == null || favoriteId < 0) {
+            throw new IllegalArgumentException("Item requires valid id");
+        }
 
         // Get writable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
@@ -213,12 +217,15 @@ public class FavoritesProvider extends ContentProvider {
         if (id == -1) {
             Log.e(LOG_TAG, "Failed to insert row for " + uri);
             return null;
+        }else{
+            Log.e(LOG_TAG, "Insertion successful for "+values.toString()+"with id: "+String.valueOf(id));
         }
 
-        // Notify all listeners that the data has changed for the inventory content URI
+        // Notify all listeners that the data has changed for the favorites content URI
         getContext().getContentResolver().notifyChange(uri, null);
 
         // Return the new URI with the ID (of the newly inserted row) appended at the end
+        Log.e(LOG_TAG,ContentUris.withAppendedId(uri, id).toString());
         return ContentUris.withAppendedId(uri, id);
     }
 

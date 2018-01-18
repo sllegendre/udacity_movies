@@ -13,15 +13,17 @@ public class Movie {
     private String mSummary;
     private Double mRating;
     private String mReleaseDate;
+    private int mOnlineId;
 
     private static final String LOG_TAG = MovieLoader.class.getSimpleName();
 
-    public Movie(String mTitle, String mPoster, String mOverview, Double mRating, String mReleaseDate) {
+    public Movie(String mTitle, String mPoster, String mOverview, Double mRating, String mReleaseDate, int mOnlineId) {
         this.mTitle = mTitle;
         this.mPoster = mPoster;
         this.mSummary = mOverview;
         this.mRating = mRating;
         this.mReleaseDate = mReleaseDate;
+        this.mOnlineId = mOnlineId;
     }
 
     public String getTitle() {
@@ -52,5 +54,9 @@ public class Movie {
 
     public String getReleaseDate() {
         return mReleaseDate;
+    }
+
+    public int getOnlineId(){
+        return mOnlineId;
     }
 }

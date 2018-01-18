@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
                         i.putExtra("overview", currentMovie.getOverview());
                         i.putExtra("rating", currentMovie.getRating());
                         i.putExtra("poster", currentMovie.getPoster(true));
+                        i.putExtra("onlineId", currentMovie.getOnlineId());
                         startActivity(i);
                     }
                 });

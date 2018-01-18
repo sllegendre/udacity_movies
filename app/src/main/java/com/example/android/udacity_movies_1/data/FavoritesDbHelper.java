@@ -42,8 +42,8 @@ public class FavoritesDbHelper extends SQLiteOpenHelper {
         // Create a String that contains the SQL statement to create the favorites table
         String SQL_CREATE_FAVORITES_TABLE = "CREATE TABLE " + FavoritesContract.FavoriteItem.TABLE_NAME + " ("
                 + FavoritesContract.FavoriteItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + FavoritesContract.FavoriteItem.COLUMN_FAVORITE_TITLE + " TEXT NOT NULL "
-                //  + FavoritesContract.FavoriteItem.COLUMN_FAVORITE_ID + " INTEGER NOT NULL, "
+                + FavoritesContract.FavoriteItem.COLUMN_FAVORITE_TITLE + " TEXT NOT NULL,"
+                + FavoritesContract.FavoriteItem.COLUMN_FAVORITE_ID + " INTEGER NOT NULL UNIQUE ON CONFLICT REPLACE "
                 + ")" + ";";
 
         // Execute the SQL statement

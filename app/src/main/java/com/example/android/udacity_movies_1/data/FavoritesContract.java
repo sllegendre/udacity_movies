@@ -47,7 +47,7 @@ public class FavoritesContract {
         public final static String TABLE_NAME = "favorites";
         public final static String _ID = BaseColumns._ID;
         public final static String COLUMN_FAVORITE_TITLE = "title";
-        //public final static String COLUMN_FAVORITE_ID = "id";
+        public final static String COLUMN_FAVORITE_ID = "id";
 
 
     }

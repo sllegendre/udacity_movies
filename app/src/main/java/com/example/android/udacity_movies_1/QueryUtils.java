@@ -1,6 +1,7 @@
 package com.example.android.udacity_movies_1;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -161,8 +162,10 @@ public class QueryUtils {
                 // Extract the url param to get the poster
                 String poster = film.getString("poster_path");
                 String releaseDate = film.getString("release_date");
+                int onlineId = film.getInt("id");
+                Log.e(LOG_TAG, "online id is: "+ onlineId);
                 // Create Movie java object
-                Movie newMovie = new Movie(title, poster, summary, rating, releaseDate);
+                Movie newMovie = new Movie(title, poster, summary, rating, releaseDate, onlineId);
                 // Add Movie to list of Movies
                 Movies.add(newMovie);
             }
